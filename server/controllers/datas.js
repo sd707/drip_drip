@@ -1,0 +1,106 @@
+var Data= require('../models/data').data;
+
+
+module.exports={
+    
+   allData : function(req, res){
+        console.log("All data", req.body);
+        Data.find({}, function (err, datas){
+            if(err){
+                res.json({message: "Could not be found", data:data})
+            }
+            else{
+                res.json({message:"Success", data: datas})
+                console.log("ayyee",datas);
+            }
+        })
+    },
+
+    // NewMentors : function(req,res){
+    //     console.log("POST DATA", req.body);
+    //     var newMentor =new Mentor({name : req.body.name, url : req.body.url, ratings : [], description : req.body.description,skills : req.body.skills})
+    //     newMentor.save(function(err){
+    //         if (err){
+    //             res.json({message:"Can not create data", error: err })
+    //         }
+    //         else{
+    //             res.json({message : "Success", data : newMentor})
+    //         }
+    //     })
+    // },
+    // NewRating: function(req, res){
+    //     Mentor.findById({ _id: req.params.id }, function (err, mentor) {
+    //         if (err) {
+    //             res.json({message: "Could not be found", data: newRating})
+    //         } else {
+
+    //             mentor.ratings.push(req.body);
+    //             var sum = 0;
+    //             for (var i = 0; i < mentor.ratings.length; i++){
+    //                 sum = sum + mentor.ratings[i].stars;
+    //             }
+    //             mentor.avgRating = sum/mentor.ratings.length;
+    //             mentor.save(function(err) {
+    //                 if (!err) {
+    //                     res.json({message: 'Success', data: mentor});
+    //                 } else {
+    //                     res.json({errorMsg: "Cannot create mentor", mentor: err})
+    //                 }
+    //             });
+    //         }
+    //     })
+    // },
+    // findMentor: function(req, res){
+    //     Mentor.findOne({ _id: req.params.id }, function (err, mentor) {
+    //         if (err) {
+    //             console.log(err);
+    //             res.json({ message: "could not be found", data:mentor });
+    //         } else {
+    //             res.json({message:"Found", data:mentor});
+    //         }
+    //     })
+
+
+    // },
+    // updateMentor: function (req,res){
+    //     console.log("Update DATA", req.body);
+
+    //     Mentor.findByIdAndUpdate(req.params.id,req.body, function(err,mentors){
+    //         console.log("mentors to edit",mentors);
+    //         if(err){
+    //             res.json({message:"Could not be found", data:mentors})
+    //         } else {
+
+    //             res.json({message:"Found", data:mentors})
+    //         }
+    //     })
+
+    // },
+    // destroy: function (req, res) {
+    //     Mentor.remove({_id: req.params.id}, function (err, mentors) {
+    //         console.log("delete one mentor", mentors);
+    //         if (err) {
+    //             res.json({message: "Could not be found", data: mentors})
+    //         } else {
+
+    //             res.json({message: "Found", data: mentors})
+    //         }
+
+
+    //     })
+    // },
+    // "destroyRating": function (req, res) {
+    //     Rating.remove({_id: req.params.id}, function (err, ratings) {
+    //         console.log("one rating to delte", ratings);
+    //         if (err) {
+    //             res.json({message: "Could not be found", data: ratings})
+    //         } else {
+
+    //             res.json({message: "Found", data: ratings})
+    //         }
+
+
+    //     })
+    // },
+
+}
